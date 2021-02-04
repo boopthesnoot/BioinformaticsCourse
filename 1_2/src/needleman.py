@@ -1,6 +1,7 @@
 from Bio.SubsMat import MatrixInfo as matlist
 
 matrix = matlist.blosum62
+print(matrix)
 
 
 def get_score(a, b, subst_matrix, gap):
@@ -30,7 +31,7 @@ def needleman_wunsch(seq1, seq2, subst_matrix, gap):
     seq2_a = []
     i = m
     j = n
-
+    print(score)
     while i > 0 and j > 0:
         cur_score = score[i][j]
         diag_score = score[i - 1][j - 1]
@@ -60,6 +61,6 @@ def needleman_wunsch(seq1, seq2, subst_matrix, gap):
     return "".join(reversed(seq1_a)), "".join(reversed(seq2_a)), score[-1][-1]
 
 
-for i in needleman_wunsch("ATTACA", "ATGCT", matrix, -3):
-    print(i)
-
+if __name__ == "__main__":
+    for i in needleman_wunsch("ATTACA", "ATGCT", matrix, -3):
+        print(i)
